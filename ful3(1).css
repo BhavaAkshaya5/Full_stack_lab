@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Colorful Background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff6a00, #ee0979, #8e2de2);
+    background-size: 300% 300%;
+    animation: bgMove 8s infinite alternate;
+}
+
+/* Card Style */
+.quiz-card {
+    width: 480px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    animation: popIn 0.6s ease;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 12px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Question */
+#question-text {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Options */
+#options label {
+    display: block;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    border-left: 8px solid transparent;
+}
+
+#options label:hover {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    color: #fff;
+    border-left: 8px solid #ff9800;
+    transform: scale(1.03);
+}
+
+#options input {
+    margin-right: 10px;
+    accent-color: #ff5722;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#nextBtn {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+}
+
+#prevBtn {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Result Page */
+#result-container {
+    text-align: center;
+}
+
+#result-container h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #764ba2;
+}
+
+#score {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff5722;
+    margin-bottom: 30px;
+}
+
+#restartBtn {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #333;
+}
+
+/* Animations */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}

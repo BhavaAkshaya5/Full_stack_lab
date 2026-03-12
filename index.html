@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>BMI Calculator</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#36d1dc,#5b86e5);
+    text-align:center;
+    padding-top:80px;
+}
+
+.container{
+    background:white;
+    width:350px;
+    margin:auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+input,select{
+    width:90%;
+    padding:8px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 20px;
+    background:#36d1dc;
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#5b86e5;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>BMI Calculator</h2>
+
+<form action="/bmicalculator" method="post">
+
+<input type="text" name="name" placeholder="Enter your Name" required>
+
+<input type="number" name="age" placeholder="Enter your Age" required>
+
+<select name="gender" required>
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<input type="text" name="height" placeholder="Height (meters)" required>
+
+<input type="text" name="weight" placeholder="Weight (kg)" required>
+
+<button type="submit">Calculate BMI</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

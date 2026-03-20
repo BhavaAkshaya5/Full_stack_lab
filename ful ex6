@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Welcome to Products World")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Product: Laptops"),
+            ElevatedButton(
+              child: Text("Add Laptop types"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(product: "Laptops"),
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 50),
+            Text("Product: Airpods"),
+            ElevatedButton(
+              child: Text("Add item"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(product: "Airpods"),
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 50),
+            Text("Product: Watch"),
+            ElevatedButton(
+              child: Text("Add Watch"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(product: "Watch"),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class CartPage extends StatelessWidget {
+  final String product;
+  CartPage({required this.product});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Cart")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Added: $product"),
+            SizedBox(height: 50),
+            ElevatedButton(
+              child: Text("Back to home"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

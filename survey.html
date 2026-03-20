@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Customer Survey</h2>
+
+        <form method="POST" action="/submit">
+            <input type="text" name="name" placeholder="Your Name" required><br>
+
+            <label>Rating:</label>
+            <select name="rating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select><br>
+
+            <label>Service Type:</label>
+            <select name="service">
+                <option>Online</option>
+                <option>In Store</option>
+            </select><br>
+
+            <textarea name="feedback" placeholder="Your feedback"></textarea><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

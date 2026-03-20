@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    color: black;
+    padding: 20px;
+    margin: 50px auto;
+    width: 300px;
+    border-radius: 10px;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 8px;
+    margin: 10px;
+}
+
+button {
+    padding: 10px;
+    background: #2575fc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    background: white;
+    color: black;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+}

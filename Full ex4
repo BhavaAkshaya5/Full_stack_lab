@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taskMasterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskMaster Hub - To Do Application</title>
+
+    <!-- AngularJS CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="TaskController">
+
+    <h1>TaskMaster Hub</h1>
+
+    <!-- Add Task Section -->
+    <input type="text" ng-model="newTask" placeholder="Enter new task">
+    <button ng-click="addTask()">Add Task</button>
+
+    <hr>
+
+    <!-- Two Column Layout -->
+    <table border="1" width="100%">
+        <tr>
+            <!-- Pending Tasks -->
+            <td width="50%" valign="top">
+                <h2>Pending Tasks</h2>
+                <ul>
+                    <li ng-repeat="task in tasks | filter:{completed:false}">
+                        
+                        <span ng-if="!task.editing" 
+                              ng-dblclick="editTask(task)">
+                            {{task.name}}
+                        </span>
+
+                        <input type="text"
+                               ng-if="task.editing"
+                               ng-model="task.name"
+                               ng-blur="task.editing=false"
+                               ng-keyup="$event.keyCode==13 && (task.editing=false)">
+
+                        <br>
+
+                        <button ng-click="toggleComplete(task)">
+                            Mark Complete
+                        </button>
+
+                        <button ng-click="editTask(task)">Edit</button>
+
+                        <button ng-click="deleteTask($index)">Delete</button>
+
+                        <hr>
+                    </li>
+                </ul>
+            </td>
+
+            <!-- Completed Tasks -->
+            <td width="50%" valign="top">
+                <h2>Completed Tasks</h2>
+                <ul>
+                    <li ng-repeat="task in tasks | filter:{completed:true}">
+                        
+                        <span>
+                            {{task.name}}
+                        </span>
+
+                        <br>
+
+                        <button ng-click="toggleComplete(task)">
+                            Undo
+                        </button>
+
+                        <button ng-click="deleteTask($index)">Delete</button>
+
+                        <hr>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- Task Statistics -->
+    <p>Total Tasks: {{tasks.length}}</p>
+    <p>Pending Tasks: {{getPendingCount()}}</p>
+    <p>Completed Tasks: {{tasks.length - getPendingCount()}}</p>
+
+<script>
+    var app = angular.module('taskMasterApp', []);
+
+    app.controller('TaskController', function($scope) {
+
+        $scope.tasks = [];
+
+        // Add Task
+        $scope.addTask = function() {
+            if ($scope.newTask && $scope.newTask.trim() !== "") {
+                $scope.tasks.push({
+                    name: $scope.newTask,
+                    completed: false,
+                    editing: false
+                });
+                $scope.newTask = "";
+            }
+        };
+
+        // Delete Task
+        $scope.deleteTask = function(index) {
+            $scope.tasks.splice(index, 1);
+        };
+
+        // Toggle Complete
+        $scope.toggleComplete = function(task) {
+            task.completed = !task.completed;
+        };
+
+        // Edit Task
+        $scope.editTask = function(task) {
+            task.editing = true;
+        };
+
+        // Count Pending
+        $scope.getPendingCount = function() {
+            var count = 0;
+            angular.forEach($scope.tasks, function(task) {
+                if (!task.completed) {
+                    count++;
+                }
+            });
+            return count;
+        };
+
+    });
+</script>
+
+</body>
+</html>
